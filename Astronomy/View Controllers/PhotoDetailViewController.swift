@@ -45,6 +45,7 @@ class PhotoDetailViewController: UIViewController {
     private func updateViews() {
         guard let photo = photo, isViewLoaded else { return }
         do {
+            title = photo.camera.fullName
             let data = try Data(contentsOf: photo.imageURL.usingHTTPS!)
             imageView.image = UIImage(data: data)?.filtered()
             let dateString = dateFormatter.string(from: photo.earthDate)
